@@ -14,7 +14,7 @@ function App() {
   const [currentRender, setCurrentRender] = useState();
   const [responses, setResponses] = useState({});
   const [lang, setLang] = useState('en');
-  const [button, setButton] = useState('Start survey');
+  const [button, setButton] = useState('Next');
 
   const getsurvey = async (value) => {
     setQuestions([]);
@@ -97,6 +97,10 @@ function App() {
       console.log("Responses:");
       console.log(responses);
       sendRespons(responses);
+      setButton(prev => 'New survey');
+    }else{
+      setCurrent((prev) => 0);
+      setButton((prev) => "Next");
     }
     // if(current === 1){
     //   set0page(prev => 'hid');
@@ -153,7 +157,7 @@ function App() {
         )}
       </div>
       <button className="btn" onClick={() => next()}>
-        Next
+        {button}
       </button>
       {/* <div className="main">
         <div className="bar1">
